@@ -1,0 +1,42 @@
+model: res18_gsc
+output_dir: ./experiments/xgaze/
+
+# data
+data_type: 'eth'
+gaze_data: ./data/GazeSets
+input_size: [224, 224]
+mirror: True
+rotate: 4.
+scale: 0.08
+offset: 12
+mean: [0.485, 0.456, 0.406]
+std: [0.229, 0.224, 0.225]
+label_factor: 1
+
+# train
+gpu_id: 0
+batch_size: 64
+iter_size: 4
+test_step: 0
+save_step: 5
+log_step: 1000
+
+# loss
+loss: 'L1'
+
+# schedule
+epochs: 32
+base_lr: 0.0001
+scheduler_type: exp
+lr_milestones: [1, 10, 13]
+lr_stepsize: 10
+gamma: 0.95
+
+# optimizer
+optimizer: adamw
+weight_decay: 0.05
+
+# test
+test_batch_size: 64
+test_model: ''
+
